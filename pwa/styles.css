@@ -1,1 +1,60 @@
+body {
+  background-color: white;
+}
+h1 {
+  font-family: Verdana, sans-serif;
+  font-size: 2px:
+  color: grey;
+}
+text {
+  color: white;
+  font-size: 64px;
+  text-align: right;
+  margin-right: 1em;
+}
+
+timeText {
+  font-family: Verdana, sans-serif;
+  color: white;
+  font-size: 24;
+}
+
+img {
+  width: 100%;
+}
+
+.leftMenu {
+  text-align: left;
+  table-layout: fixed;
+  width: 200px;
+}
+
+.headerFooter {
+  font-family: Verdana, sans-serif;
+  text-align: right;
+  height: 150px;
+  background-color: red;
+}
+
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
