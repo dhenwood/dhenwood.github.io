@@ -1,4 +1,13 @@
 
+//Gets the Device Name
+function getDeviceName() {
+        const params = new URLSearchParams(window.location.search);
+        const serialNumber = params.get('roomname')
+        var serialResult;
+        serialNumber === null ? serialResult = 'peripheralSerial not set' : serialResult = serialNumber
+        document.getElementById('roomName').innerHTML = serialResult;
+}
+
 function refreshTime() {
   const timeDisplay = document.getElementById("time");
   const myDate = new Date();
@@ -16,4 +25,27 @@ function refreshTime() {
 }
 
 
-setInterval(refreshTime, 1000);
+//setInterval(refreshTime, 1000);
+//getDeviceName();
+
+async function init() {
+        try {
+                //xapi = await getXAPI();
+                //xapistatus.textContent = "jsxapi available";
+                //myState.textContent = "Occupied";
+                //unique_id = createPersistentCookie();
+                //content.textContent = "Navigator ID: " + unique_id;
+                //setupSubscriptions();
+                //getCurrent();
+                //updateSerial();
+          refreshTime()
+          getDeviceName();
+        } catch(e) {
+                content.textContent = e.message;
+                //xapistatus.textContent = "error getting jsxapi object";
+        }
+}
+ 
+window.onload = async function() {
+        init();         
+}; 
