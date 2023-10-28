@@ -5,7 +5,7 @@ function getDeviceName() {
         const serialNumber = params.get('roomname')
         var serialResult;
         serialNumber === null ? serialResult = 'peripheralSerial not set' : serialResult = serialNumber
-        document.getElementById('roomName').innerHTML = serialResult;
+        document.getElementById('roomName').textContent = serialResult;
 }
 
 function refreshTime() {
