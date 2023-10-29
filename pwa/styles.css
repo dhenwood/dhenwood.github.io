@@ -1,17 +1,6 @@
 body {
   background-color: white;
 }
-h1 {
-  font-family: Verdana, sans-serif;
-  font-size: 2px:
-  color: grey;
-}
-text {
-  color: white;
-  font-size: 64px;
-  text-align: right;
-  margin-right: 1em;
-}
 
 timeText {
   font-family: Verdana, sans-serif;
@@ -32,6 +21,8 @@ img {
 .headerFooter {
   font-family: Verdana, sans-serif;
   text-align: right;
+  color: white;
+  font-size: 64px;
   height: 150px;
   background-color: red;
 }
@@ -58,4 +49,3 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
