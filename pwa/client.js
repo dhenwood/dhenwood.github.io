@@ -27,7 +27,7 @@ function refreshTime() {
 
 async function init() {
         try {
-                //xapi = await getXAPI();
+                xapi = await getXAPI();
                 //const xapistatus = document.getElementById('xapistatus');
                 document.getElementById('xapistatus').textContent = "jsxapi available";
                 //xapistatus.textContent = "jsxapi available";
