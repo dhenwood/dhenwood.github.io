@@ -8,7 +8,6 @@ function getDeviceName() {
 }
 
 function refreshTime() {
-  //const timeDisplay = document.getElementById("time");
   const myDate = new Date();
   var myHour = myDate.getHours();
   var myMinute = myDate.getMinutes();
@@ -20,7 +19,7 @@ function refreshTime() {
   mySecond = mySecond < 10 ? '0'+mySecond : mySecond;
   var strTime = myHour + ':' + myMinute + ':' + mySecond + ' ' + ampm;
 
-  timeDisplay.textContent = strTime;
+  document.getElementById('time').textContent = strTime;
 }
 
 
@@ -28,22 +27,12 @@ function refreshTime() {
 async function init() {
         try {
                 xapi = await getXAPI();
-                //const xapistatus = document.getElementById('xapistatus');
                 document.getElementById('xapistatus').textContent = "jsxapi available";
-                //xapistatus.textContent = "jsxapi available";
-                //myState.textContent = "Occupied";
-                //unique_id = createPersistentCookie();
-                //content.textContent = "Navigator ID: " + unique_id;
                 setupSubscriptions();
                 getCurrent();
-                //updateSerial();
-          //refreshTime()
-          setInterval(refreshTime, 1000);
-          getDeviceName();
+                setInterval(refreshTime, 1000);
+                getDeviceName();
         } catch(e) {
-                //content.textContent = e.message;
-                //const xapistatus = document.getElementById('xapistatus');
-                //xapistatus.textContent = "error getting jsxapi object";
                 document.getElementById('xapistatus').textContent = 'Error: ' + e.message;
         }
 }
@@ -52,12 +41,9 @@ window.onload = async function() {
         init();         
 }; 
 
-const timeDisplay = document.getElementById("time");
-const xapistatus = document.getElementById('xapistatus');
 
 //Gets the current xStatus of LedControl Color and displays on the page.
 function getCurrent() {
-        //Example xapi xStatus
         xapi.Status.UserInterface.LedControl.Color.get().then((color) => {
                 setLedColor(color)
     })     
@@ -65,6 +51,7 @@ function getCurrent() {
                 console.log(error);
     });
 }
+
 
 function setLedColor(color) {
         console.log("COLOR: " + color)
@@ -75,15 +62,18 @@ function setLedColor(color) {
                 case 'Blue':
                 case 'Purple':
                 case 'Orange':
-                         //document.getElementById('roomName').innerHTML = color;
                         document.getElementById('roomName').style.height ='130px';
-                        document.getElementById('roomName').style.backgroundColor = color;
                         document.getElementById('roomOccupied').style.height ='130px';
-                        document.getElementById('roomOccupied').style.backgroundColor = color;
+                        document.getElementById('id1').style.backgroundColor = color;
+                        document.getElementById('id2').style.backgroundColor = color;
                         if(color == 'Green'){
-                                document.getElementById('roomOccupied').innerHTML = 'Room is free';
+                                document.getElementById('roomOccupied').innerHTML = "Room is available";
+                        }else if(color == 'Yellow'){
+                                document.getElementById('roomOccupied').innerHTML = "Room is booked";
+                                document.getElementById('id1').style.backgroundColor = "Orange"; // Yellow does not display well
+                                document.getElementById('id2').style.backgroundColor = "Orange"; // Yellow does not display well
                         }else{
-                                document.getElementById('roomOccupied').innerHTML = 'Room Occupied';
+                                document.getElementById('roomOccupied').innerHTML = "Room is occupied";
                         }
                          break;
                 case 'Off':
