@@ -77,11 +77,15 @@ function setLedColor(color) {
                         }
                          break;
                 case 'Off':
-                        document.getElementById('ledRect').style.fill = 'black';
+                        document.getElementById('roomOccupied').innerHTML = "Room is available";
+                        document.getElementById('id1').style.backgroundColor = 'green';
+                        document.getElementById('id2').style.backgroundColor = 'green';
                         break;
                 default:
                         console.log("Unexpected color")
-                        document.getElementById('ledRect').style.fill = 'grey';
+                        document.getElementById('roomOccupied').innerHTML = "An Error has occured";
+                        document.getElementById('id1').style.backgroundColor = 'grey';
+                        document.getElementById('id2').style.backgroundColor = 'grey';
         }
 }
 
