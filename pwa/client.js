@@ -77,7 +77,7 @@ function setLedColor(color) {
                         }
                          break;
                 case 'Off':
-                        document.getElementById('roomOccupied').innerHTML = "Someone is useing the room";
+                        document.getElementById('roomOccupied').innerHTML = "Room is occupied";
                         document.getElementById('id1').style.backgroundColor = 'red';
                         document.getElementById('id2').style.backgroundColor = 'red';
                         break;
