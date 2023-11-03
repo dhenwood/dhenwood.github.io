@@ -70,16 +70,25 @@ function setLedColor(color) {
                                 document.getElementById('roomOccupied').innerHTML = "Room is available";
                         }else if(color == 'Yellow'){
                                 document.getElementById('roomOccupied').innerHTML = "Room is booked";
-                                document.getElementById('id1').style.backgroundColor = "Orange"; // Yellow does not display well
-                                document.getElementById('id2').style.backgroundColor = "Orange"; // Yellow does not display well
+                                document.getElementById('id1').style.backgroundColor = "orange"; // Yellow does not display well
+                                document.getElementById('id2').style.backgroundColor = "orange"; // Yellow does not display well
                         }else{
                                 document.getElementById('roomOccupied').innerHTML = "Room is occupied";
                         }
                          break;
                 case 'Off':
-                        document.getElementById('roomOccupied').innerHTML = "Room is occupied";
-                        document.getElementById('id1').style.backgroundColor = 'red';
-                        document.getElementById('id2').style.backgroundColor = 'red';
+                        // Scenario where LED is off is hotdesking mode or no calendar. In which case, we will use people count
+                        xapi.Status.RoomAnalytics.PeopleCount.Current.get().then((count) => {
+                                if(count >= 1){
+                                        document.getElementById('roomOccupied').innerHTML = "Room is occupied";
+                                        document.getElementById('id1').style.backgroundColor = 'red';
+                                        document.getElementById('id2').style.backgroundColor = 'red';
+                                }else{
+                                        document.getElementById('roomOccupied').innerHTML = "Room is available";
+                                        document.getElementById('id1').style.backgroundColor = 'green';
+                                        document.getElementById('id2').style.backgroundColor = 'green';
+                                }
+                        })     
                         break;
                 default:
                         console.log("Unexpected color")
